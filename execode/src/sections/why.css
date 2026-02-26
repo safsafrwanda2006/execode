@@ -1,0 +1,74 @@
+/* sections/why.css */
+.exe-why {
+  padding: 80px 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.25), rgba(17, 24, 39, 0.2));
+  border-top: 1px solid rgba(30, 41, 59, 0.35);
+}
+@media (max-width: 640px) {
+  .exe-why {
+    padding: 56px 0;
+  }
+}
+.exe-whyHead {
+  max-width: 780px;
+  margin-bottom: 28px;
+}
+
+.exe-whyGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+.exe-whyCard {
+  grid-column: span 6;
+  border-radius: var(--r-xl);
+  background: rgba(17, 24, 39, 0.55);
+  border: 1px solid rgba(31, 41, 55, 0.92);
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
+}
+.exe-whyCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.26);
+  border-color: rgba(6, 182, 212, 0.28);
+}
+.exe-whyCard img {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+}
+@media (max-width: 900px) {
+  .exe-whyCard {
+    grid-column: span 12;
+  }
+}
+@media (min-width: 1100px) {
+  .exe-whyCard {
+    grid-column: span 3;
+  }
+}
+
+.exe-whyIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(6, 182, 212, 0.95));
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.18);
+  margin-bottom: 12px;
+}
+.exe-whyTitle {
+  margin: 0 0 8px;
+  color: var(--text-0);
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+}
+.exe-whyDesc {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 650;
+}

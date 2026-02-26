@@ -1,0 +1,123 @@
+/* sections/proposal.css */
+.exe-proposal {
+  padding: 80px 0;
+  border-top: 1px solid rgba(30, 41, 59, 0.35);
+  background: linear-gradient(180deg, rgba(11, 17, 32, 0.2), rgba(15, 23, 42, 0.55));
+}
+@media (max-width: 640px) {
+  .exe-proposal {
+    padding: 56px 0;
+  }
+}
+
+.exe-proposalGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 18px;
+  align-items: start;
+}
+@media (max-width: 980px) {
+  .exe-proposalGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.exe-proposalStats {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@media (max-width: 640px) {
+  .exe-proposalStats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.exe-pStat {
+  padding: 14px;
+  border-radius: var(--r-xl);
+  background: rgba(17, 24, 39, 0.55);
+  border: 1px solid rgba(31, 41, 55, 0.92);
+}
+.exe-pNum {
+  color: var(--text-0);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+}
+.exe-pLbl {
+  margin-top: 6px;
+  color: var(--text-2);
+  font-weight: 750;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* form */
+.exe-form {
+  border-radius: var(--r-xl);
+  background: rgba(17, 24, 39, 0.55);
+  border: 1px solid rgba(31, 41, 55, 0.92);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+  padding: 18px;
+}
+
+.exe-formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 640px) {
+  .exe-formRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.exe-label {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: var(--text-1);
+  font-weight: 750;
+  font-size: 13px;
+}
+
+.exe-input {
+  width: 100%;
+  border-radius: var(--r-md);
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(31, 41, 55, 0.95);
+  color: var(--text-0);
+  padding: 12px 12px;
+  outline: none;
+  font-weight: 650;
+  transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.exe-input::placeholder {
+  color: rgba(100, 116, 139, 0.95);
+}
+.exe-input:focus {
+  border-color: rgba(37, 99, 235, 0.75);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.exe-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.exe-formActions {
+  margin-top: 8px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.exe-formNote {
+  margin-top: 10px;
+  color: rgba(148, 163, 184, 0.85);
+  font-size: 12px;
+  line-height: 18px;
+}

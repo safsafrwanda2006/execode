@@ -1,0 +1,504 @@
+/* sections/work.css */
+/* Keeps same palette/tokens, but improves modal UX on desktop + mobile, and fixes hero image cropping */
+
+.exe-work {
+  padding: 80px 0;
+}
+@media (max-width: 640px) {
+  .exe-work {
+    padding: 56px 0;
+  }
+}
+
+.exe-workHead {
+  max-width: 780px;
+  margin-bottom: 28px;
+}
+
+.exe-workGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+/* Cards */
+.exe-workCard {
+  grid-column: span 12;
+  border-radius: var(--r-xl);
+  background: rgba(17, 24, 39, 0.55);
+  border: 1px solid rgba(31, 41, 55, 0.92);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+  overflow: hidden;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
+}
+.exe-workCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.26);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+@media (min-width: 980px) {
+  .exe-workCard {
+    grid-column: span 4;
+  }
+}
+
+/* Cover image */
+.exe-workMedia {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  display: block;
+}
+.exe-workImg {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+  background: rgba(15, 23, 42, 0.65);
+}
+.exe-workMediaOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 14px;
+  background: linear-gradient(180deg, transparent 35%, rgba(0, 0, 0, 0.62));
+  opacity: 0.86;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+.exe-workMediaTag {
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 850;
+  color: var(--text-0);
+  background: rgba(6, 182, 212, 0.14);
+  border: 1px solid rgba(6, 182, 212, 0.22);
+}
+.exe-workMedia:hover .exe-workMediaOverlay {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Content */
+.exe-workTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px 0;
+}
+.exe-workTitle {
+  margin: 0;
+  color: var(--text-0);
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+}
+.exe-workType {
+  margin-top: 6px;
+  color: var(--text-2);
+  font-weight: 650;
+  font-size: 13px;
+  line-height: 18px;
+}
+.exe-workBadge {
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-0);
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  white-space: nowrap;
+}
+
+.exe-workBody {
+  padding: 12px 18px 0;
+  display: grid;
+  gap: 12px;
+}
+
+.exe-workDesc {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 650;
+}
+
+.exe-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.exe-chip {
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 750;
+  color: var(--text-1);
+  border: 1px solid rgba(30, 41, 59, 0.85);
+  background: rgba(11, 17, 32, 0.55);
+}
+
+.exe-workFooter {
+  margin-top: 14px;
+  padding: 14px 18px 18px;
+  border-top: 1px solid rgba(30, 41, 59, 0.6);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* =============== MODAL =============== */
+.exe-modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.exe-modalBackdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.66);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Better sizing for desktop + mobile:
+   - Desktop: centered panel with max height
+   - Mobile: bottom-sheet style with full width and scroll
+*/
+.exe-modal {
+  position: relative;
+  width: min(1080px, 100%);
+  max-height: min(86vh, 860px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  border-radius: var(--r-xl);
+  background: rgba(17, 24, 39, 0.96);
+  border: 1px solid rgba(31, 41, 55, 0.92);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+/* Header sticky inside modal */
+.exe-modalHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.7);
+  background: rgba(17, 24, 39, 0.98);
+}
+
+.exe-modalTitle {
+  color: var(--text-0);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+}
+.exe-modalSub {
+  margin-top: 6px;
+  color: var(--text-2);
+  font-weight: 650;
+  font-size: 13px;
+}
+
+.exe-modalClose {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(31, 41, 55, 0.95);
+  background: rgba(15, 23, 42, 0.65);
+  color: var(--text-0);
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s ease-out, border-color 0.2s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.exe-modalClose:hover {
+  transform: translateY(-2px);
+  border-color: rgba(6, 182, 212, 0.35);
+}
+
+/* Scrollable content region */
+.exe-modalGrid {
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+}
+@media (max-width: 980px) {
+  .exe-modalGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Gallery side */
+.exe-modalGallery {
+  padding: 14px 16px 16px;
+  border-right: 1px solid rgba(30, 41, 59, 0.7);
+}
+@media (max-width: 980px) {
+  .exe-modalGallery {
+    border-right: none;
+    border-bottom: 1px solid rgba(30, 41, 59, 0.7);
+  }
+}
+
+.exe-modalMain {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  border: 1px solid rgba(31, 41, 55, 0.92);
+  background: rgba(15, 23, 42, 0.65);
+}
+
+/* Default: contain to avoid cropping */
+.exe-modalImg {
+  width: 100%;
+  height: 420px;
+  object-fit: contain; /* ✅ prevents left/right cropping */
+  object-position: center;
+  display: block;
+  background: rgba(11, 17, 32, 0.55);
+}
+
+/* Hero (index 0): make it feel like "wallpaper" but still not crop.
+   We keep contain, increase height slightly on desktop. */
+.exe-modalImg.isHero {
+  height: 460px;
+}
+
+@media (max-width: 640px) {
+  .exe-modalImg {
+    height: 320px;
+  }
+  .exe-modalImg.isHero {
+    height: 340px;
+  }
+}
+
+/* Prev/Next buttons */
+.exe-navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  border: 1px solid rgba(31, 41, 55, 0.95);
+  background: rgba(11, 17, 32, 0.6);
+  color: var(--text-0);
+  font-size: 26px;
+  cursor: pointer;
+  transition: transform 0.2s ease-out, border-color 0.2s ease-out, background 0.2s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.exe-navBtn:hover {
+  transform: translateY(-50%) scale(1.03);
+  border-color: rgba(6, 182, 212, 0.35);
+  background: rgba(15, 23, 42, 0.85);
+}
+.exe-navBtn:first-of-type {
+  left: 10px;
+}
+.exe-navBtn:last-of-type {
+  right: 10px;
+}
+
+/* Thumbs */
+.exe-thumbs {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.exe-thumb {
+  border: 1px solid rgba(31, 41, 55, 0.95);
+  background: rgba(15, 23, 42, 0.65);
+  border-radius: 14px;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  width: 92px;
+  height: 58px;
+  flex: 0 0 auto;
+  transition: transform 0.2s ease-out, border-color 0.2s ease-out;
+}
+.exe-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.exe-thumb:hover {
+  transform: translateY(-2px);
+  border-color: rgba(6, 182, 212, 0.35);
+}
+.exe-thumb.isActive {
+  border-color: rgba(37, 99, 235, 0.7);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.18);
+}
+
+.exe-modalHint {
+  margin-top: 10px;
+  color: rgba(148, 163, 184, 0.85);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+/* Details side */
+.exe-modalDetails {
+  padding: 14px 16px 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.exe-detailBlock {
+  padding: 12px;
+  border-radius: var(--r-xl);
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(30, 41, 59, 0.65);
+}
+.exe-detailLabel {
+  color: var(--text-2);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.exe-detailText {
+  color: var(--text-1);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 650;
+}
+.exe-detailChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.exe-detailCtas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Mobile bottom bar (extra usability) */
+.exe-modalMobileBar {
+  display: none;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(30, 41, 59, 0.7);
+  background: rgba(17, 24, 39, 0.98);
+}
+@media (max-width: 640px) {
+  .exe-modal {
+    max-height: 92vh;
+    border-radius: 20px;
+  }
+  .exe-modalMobileBar {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+/* ===== Fix horizontal overflow on mobile modal ===== */
+.exe-modalOverlay {
+  overflow: hidden; /* prevent overlay from creating X scroll */
+}
+
+.exe-modal {
+  max-width: 100%;
+  overflow-x: hidden; /* hard stop */
+}
+
+.exe-modalGrid {
+  min-width: 0; /* allow grid to shrink */
+  overflow-x: hidden; /* prevent inner X scroll */
+}
+
+.exe-modalGallery,
+.exe-modalDetails {
+  min-width: 0; /* critical: prevents content forcing wider layout */
+}
+
+.exe-detailText,
+.exe-workDesc {
+  overflow-wrap: anywhere; /* breaks long words/urls */
+  word-break: break-word;
+}
+
+.exe-detailChips,
+.exe-stack {
+  min-width: 0;
+}
+
+/* chips can force overflow on narrow screens */
+.exe-chip {
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+/* thumbs row must not force the parent wider */
+.exe-thumbs {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+/* images must not overflow due to rounding or layout */
+.exe-modalImg,
+.exe-workImg {
+  max-width: 100%;
+}
+
+/* Mobile: remove overlay padding that can cause width issues */
+@media (max-width: 640px) {
+  .exe-modalOverlay {
+    padding: 10px;
+  }
+
+  .exe-modal {
+    width: 100%;
+  }
+
+  /* ensure modal content doesn't create sideways scroll */
+  .exe-modalHeader,
+  .exe-modalGallery,
+  .exe-modalDetails,
+  .exe-modalMobileBar {
+    overflow-x: hidden;
+  }
+}

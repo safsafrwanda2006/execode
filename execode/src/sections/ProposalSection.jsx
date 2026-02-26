@@ -1,0 +1,139 @@
+// sections/ProposalSection.jsx
+import React, { useState } from "react";
+import "./proposal.css";
+
+export default function ProposalSection() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    projectType: "Website",
+    budget: "Under $300",
+    message: "",
+  });
+
+  const onChange = (e) =>
+    setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    // validation simple
+    if (!form.name || !form.email || !form.message) {
+      alert("أكمل الاسم، الإيميل والوصف علشان ترسل الطلب.");
+      return;
+    }
+
+    // Build message text
+    const text = `New Proposal Request
+Name: ${form.name}
+Email: ${form.email}
+Project: ${form.projectType}
+Budget: ${form.budget}
+Details: ${form.message}`;
+
+    const encoded = encodeURIComponent(text);
+
+    // open WhatsApp chat (uses your provided number)
+    const phone = "250794101251";
+    window.open(`https://wa.me/${phone}?text=${encoded}`, "_blank");
+  };
+
+  return (
+    <section className="exe-proposal" id="proposal" aria-labelledby="proposal-title">
+      <div className="exe-container">
+        <div className="exe-proposalGrid">
+          <div className="exe-proposalText">
+            <span className="exe-kicker">Request a Proposal</span>
+            <h2 className="exe-h2" id="proposal-title">
+              Tell Us What You’re Building
+            </h2>
+            <p className="exe-sub">
+              We respond with a clear scope, timeline, and next steps — built for clients from freelance platforms.
+            </p>
+
+            <div className="exe-proposalStats" role="list">
+              <div className="exe-pStat" role="listitem">
+                <div className="exe-pNum">24h</div>
+                <div className="exe-pLbl">Typical Response</div>
+              </div>
+              <div className="exe-pStat" role="listitem">
+                <div className="exe-pNum">Clean</div>
+                <div className="exe-pLbl">Scope & Milestones</div>
+              </div>
+              <div className="exe-pStat" role="listitem">
+                <div className="exe-pNum">Secure</div>
+                <div className="exe-pLbl">Professional Delivery</div>
+              </div>
+            </div>
+          </div>
+
+          <form className="exe-form" onSubmit={onSubmit}>
+            <div className="exe-formRow">
+              <label className="exe-label">
+                Full Name
+                <input className="exe-input" name="name" value={form.name} onChange={onChange} required />
+              </label>
+              <label className="exe-label">
+                Email
+                <input className="exe-input" name="email" value={form.email} onChange={onChange} required />
+              </label>
+            </div>
+
+            <div className="exe-formRow">
+              <label className="exe-label">
+                Project Type
+                <select className="exe-input" name="projectType" value={form.projectType} onChange={onChange}>
+                  <option>Website</option>
+                  <option>Landing Page</option>
+                  <option>Web Application</option>
+                  <option>Dashboard / Admin</option>
+                </select>
+              </label>
+              <label className="exe-label">
+                Budget
+                <select className="exe-input" name="budget" value={form.budget} onChange={onChange}>
+                  <option>Under $300</option>
+                  <option>$300 – $800</option>
+                  <option>$800 – $2000</option>
+                  <option>$2000+</option>
+                </select>
+              </label>
+            </div>
+
+            <label className="exe-label">
+              Project Details
+              <textarea
+                className="exe-input exe-textarea"
+                name="message"
+                value={form.message}
+                onChange={onChange}
+                placeholder="Goals, pages/screens, features, deadline..."
+                required
+              />
+            </label>
+
+            <div className="exe-formActions">
+              <button className="exe-btn exe-btnPrimary" type="submit">
+                Submit Request (WhatsApp)
+              </button>
+
+              {/* Email fallback - change the email address to your real one */}
+              <a
+                className="exe-btn exe-btnSecondary"
+                href={`mailto:contact@execode.com?subject=${encodeURIComponent("Proposal Request")}&body=${encodeURIComponent(
+                  `Name: ${form.name}\nEmail: ${form.email}\nProject: ${form.projectType}\nBudget: ${form.budget}\n\nDetails:\n${form.message}`
+                )}`}
+              >
+                Email Instead
+              </a>
+            </div>
+
+            <div className="exe-formNote">
+              You’ll get a professional response with scope, timeline, and next steps.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
