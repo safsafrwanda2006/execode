@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./proposal.css";
 
 export default function ProposalSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -10,33 +11,56 @@ export default function ProposalSection() {
     budget: "Under $300",
     message: "",
   });
-  
+
   const onChange = (e) =>
     setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
 
-const onSubmit = async (e) => {
-  e.preventDefault();
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (isSubmitting) return;
 
-  const fd = new FormData();
-  fd.append("name", form.name);
-  fd.append("email", form.email);
-  fd.append("projectType", form.projectType);
-  fd.append("budget", form.budget);
-  fd.append("message", form.message);
+    setIsSubmitting(true);
 
-  try {
-    const res = await fetch("https://script.google.com/macros/s/AKfycbybXFeuIDVgO8oMulL1XjVDzSJS-WaclNQIukN-_Bfn4OQQmnfqniuPNoYkd-iFzVMw/exec", {
-      method: "POST",
-      body: fd,
-    });
+    const fd = new FormData();
+    fd.append("name", form.name);
+    fd.append("email", form.email);
+    fd.append("projectType", form.projectType);
+    fd.append("budget", form.budget);
+    fd.append("message", form.message);
 
-    const data = await res.json();
-    alert("Submitted. Please check our response soon.");
-  } catch (err) {
-    console.error(err);
-    alert("Failed ❌");
-  }
-};
+    try {
+      const res = await fetch(
+        "https://script.google.com/macros/s/AKfycbybXFeuIDVgO8oMulL1XjVDzSJS-WaclNQIukN-_Bfn4OQQmnfqniuPNoYkd-iFzVMw/exec",
+        { method: "POST", body: fd },
+      );
+
+      // لو السكربت رجّع خطأ/صفحة بدل JSON
+      let data = null;
+      try {
+        data = await res.json();
+      } catch (_) {}
+
+      if (!res.ok || (data && data.status && data.status !== "success")) {
+        throw new Error("Submission failed");
+      }
+
+      alert("Submitted. Please check our response soon.");
+
+      // ✅ reset form
+      setForm({
+        name: "",
+        email: "",
+        projectType: "Website",
+        budget: "Under $300",
+        message: "",
+      });
+    } catch (err) {
+      console.error(err);
+      alert("Failed ❌");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section
@@ -140,18 +164,21 @@ const onSubmit = async (e) => {
             </label>
 
             <div className="exe-formActions">
-              <button className="exe-btn exe-btnPrimary" type="submit">
-                Submit Request
+              <button
+                className="exe-btn exe-btnPrimary"
+                type="submit"
+                disabled={isSubmitting}
+                aria-busy={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Submit Request"}
               </button>
 
               {/* Email fallback - change the email address to your real one */}
               <a
                 className="exe-btn exe-btnSecondary"
-                href={`mailto:contact@execode.com?subject=${encodeURIComponent("Proposal Request")}&body=${encodeURIComponent(
-                  `Name: ${form.name}\nEmail: ${form.email}\nProject: ${form.projectType}\nBudget: ${form.budget}\n\nDetails:\n${form.message}`,
-                )}`}
+                href="mailto:makzomltd@gmail.com"
               >
-                Email Instead
+                Contact Directly via Email
               </a>
             </div>
 

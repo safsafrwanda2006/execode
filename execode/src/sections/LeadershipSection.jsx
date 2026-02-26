@@ -20,7 +20,7 @@ const TEAM = [
     id: "designer",
     name: "Amina Saleh",
     role: "UI/UX & Graphic Designer",
-    img: "/designer.png",
+    img: "/images/member/woman.png",
     highlight: false,
     points: [
       "Brand identity & visual systems",
@@ -31,7 +31,7 @@ const TEAM = [
   {
     id: "strategy",
     name: "Mortada Hasabo",
-    role: "Business Strategy Lead",
+    role: "Full stack strategist",
     img: "/images/member/mortada.png", // put this image in /public
     highlight: false,
     points: [

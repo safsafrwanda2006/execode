@@ -26,10 +26,19 @@ export default function ExeCodeHero() {
       {/* ===== Header ===== */}
       <header className="siteHeader">
         <div className="container headerInner">
-          <a className="brand" href="#">
-            <span className="brandMark" aria-hidden="true" />
+          <a className="brand" href="#" aria-label="ExeCode home">
+            <span className="brandMark" aria-hidden="true">
+              <span className="logoE"></span>
+              <span className="logoX">
+                <span className="xA" />
+                <span className="xB" />
+                <span className="xArrow" />
+              </span>
+            </span>
+           <span>
             <span className="brandText">
               ExeCode <span className="brandDot">.</span>
+              </span>
               <small>Digital Engineering Agency</small>
             </span>
           </a>

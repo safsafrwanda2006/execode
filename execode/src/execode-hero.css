@@ -37,20 +37,36 @@ body {
 }
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
- 
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
+
   color: var(--text-1);
   overflow-x: hidden;
 }
-.hero{
-    height: 100%;
-    min-height: 100vh;
- background: radial-gradient(1200px 600px at 20% 10%, rgba(37, 99, 235, 0.22), transparent 60%),
-    radial-gradient(900px 500px at 80% 20%, rgba(6, 182, 212, 0.16), transparent 55%),
+.hero {
+  height: 100%;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      1200px 600px at 20% 10%,
+      rgba(37, 99, 235, 0.22),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 80% 20%,
+      rgba(6, 182, 212, 0.16),
+      transparent 55%
+    ),
     linear-gradient(180deg, var(--bg-0), #070a13 75%);
 }
 .pageContainer {
-    height: 100%;
+  height: 100%;
   min-height: 100vh;
   min-width: 100vw;
 }
@@ -84,8 +100,12 @@ a {
   cursor: pointer;
   user-select: none;
   white-space: nowrap;
-  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background 0.2s ease-out,
-    border-color 0.2s ease-out, color 0.2s ease-out;
+  transition:
+    transform 0.2s ease-out,
+    box-shadow 0.2s ease-out,
+    background 0.2s ease-out,
+    border-color 0.2s ease-out,
+    color 0.2s ease-out;
 }
 .btn:active {
   transform: translateY(0px) scale(0.99);
@@ -136,16 +156,144 @@ a {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: 850;
-  letter-spacing: -0.02em;
-  color: var(--text-0);
-  min-width: 220px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brandMark {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.brandMark::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.25),
+    transparent 55%
+  );
+  transform: rotate(25deg);
+}
+
+.logoE {
+  position: absolute;
+  left: 11px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  font-size: 18px;
+  opacity: 0.92;
+}
+
+.logoX {
+  position: absolute;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  transform: translateY(1px);
+}
+
+.logoX .xA,
+.logoX .xB {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 3px;
+  border-radius: 999px;
+  background: currentColor;
+  transform-origin: center;
+  opacity: 0.9;
+}
+
+.logoX .xA {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.logoX .xB {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* السهم الطالع فوق يمين (Growth) فوق حرف X */
+.logoX .xArrow {
+  position: absolute;
+  right: -2px;
+  top: -2px;
+  width: 10px;
+  height: 10px;
+  border-right: 3px solid currentColor;
+  border-top: 3px solid currentColor;
+  border-radius: 2px;
+  transform: rotate(0deg);
+  opacity: 0.95;
+}
+
+/* النص */
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.brandDot {
+  opacity: 0.9;
+}
+
+.brandText small {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+/* Hover */
+.brand:hover .brandMark {
+  transform: translateY(-1px);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+}
+
+.brand:active .brandMark {
+  transform: translateY(0px);
+}
+
+/* اختياري: دعم الوضع الفاتح */
+@media (prefers-color-scheme: light) {
+  .brandMark {
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  .brandMark::before {
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(0, 0, 0, 0.1),
+      transparent 55%
+    );
+  }
 }
 .brandMark {
   width: 36px;
   height: 36px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 1), rgba(6, 182, 212, 1));
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 1),
+    rgba(6, 182, 212, 1)
+  );
   box-shadow: 0 10px 24px rgba(37, 99, 235, 0.18);
   position: relative;
   overflow: hidden;
@@ -154,12 +302,17 @@ a {
   content: "";
   position: absolute;
   inset: -20%;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.35), transparent 45%);
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.35),
+    transparent 45%
+  );
   transform: rotate(15deg);
 }
 .brandText {
-  display: grid;
+  display: flex;
   line-height: 1.05;
+  flex-direction: row;
 }
 .brandDot {
   color: var(--accent-2);
@@ -183,7 +336,9 @@ a {
   color: var(--text-1);
   font-weight: 650;
   opacity: 0.92;
-  transition: color 0.12s ease-out, opacity 0.12s ease-out;
+  transition:
+    color 0.12s ease-out,
+    opacity 0.12s ease-out;
 }
 .nav a:hover {
   color: var(--accent-2);
@@ -211,7 +366,7 @@ a {
   padding: 10px;
   transition: all 0.6s ease;
 }
-.menuBtn:focus{
+.menuBtn:focus {
   outline: none;
   border: 1px solid rgba(31, 41, 55, 0.9);
 }
@@ -419,7 +574,11 @@ a {
 .visualCard {
   position: relative;
   border-radius: var(--r-xl);
-  background: linear-gradient(180deg, rgba(17, 24, 39, 0.85), rgba(15, 23, 42, 0.55));
+  background: linear-gradient(
+    180deg,
+    rgba(17, 24, 39, 0.85),
+    rgba(15, 23, 42, 0.55)
+  );
   border: 1px solid rgba(31, 41, 55, 0.9);
   box-shadow: var(--shadow-1);
   padding: 18px;
@@ -430,8 +589,17 @@ a {
   content: "";
   position: absolute;
   inset: -2px;
-  background: radial-gradient(400px 220px at 15% 10%, rgba(37, 99, 235, 0.22), transparent 60%),
-    radial-gradient(420px 240px at 85% 25%, rgba(6, 182, 212, 0.18), transparent 60%);
+  background:
+    radial-gradient(
+      400px 220px at 15% 10%,
+      rgba(37, 99, 235, 0.22),
+      transparent 60%
+    ),
+    radial-gradient(
+      420px 240px at 85% 25%,
+      rgba(6, 182, 212, 0.18),
+      transparent 60%
+    );
   pointer-events: none;
 }
 
@@ -531,4 +699,3 @@ a {
 }
 
 /* this is for service section */
-
