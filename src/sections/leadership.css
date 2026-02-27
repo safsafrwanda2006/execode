@@ -1,0 +1,270 @@
+/* sections/leadership.css */
+/* Uses your existing tokens (.exe-container, .exe-btn, --accent-1/2, --text-0/1/2, --r-xl/--r-lg) */
+
+/* ===== Section ===== */
+.exe-lead {
+  padding: 80px 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.22), rgba(11, 17, 32, 0.28));
+  border-top: 1px solid rgba(30, 41, 59, 0.35);
+}
+@media (max-width: 640px) {
+  .exe-lead {
+    padding: 56px 0;
+  }
+}
+
+.exe-leadHead {
+  max-width: 820px;
+  margin-bottom: 28px;
+}
+
+/* ===== Grid ===== */
+.exe-teamGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+.exe-teamCard {
+  grid-column: span 12;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-xl);
+  background: rgba(17, 24, 39, 0.6);
+  border: 1px solid rgba(31, 41, 55, 0.92);
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.22);
+  padding: 18px;
+  transform: translateZ(0);
+  transition: transform 0.18s ease-out, border-color 0.18s ease-out, box-shadow 0.18s ease-out;
+}
+.exe-teamCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(6, 182, 212, 0.28);
+  box-shadow: 0 18px 58px rgba(0, 0, 0, 0.32);
+}
+
+@media (min-width: 980px) {
+  .exe-teamCard {
+    grid-column: span 4;
+  }
+}
+
+/* ===== Founder emphasis (subtle but premium) ===== */
+.exe-teamCard.isFounder {
+  border-color: rgba(37, 99, 235, 0.38);
+}
+.exe-teamCard.isFounder::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(560px 280px at 18% 10%, rgba(37, 99, 235, 0.18), transparent 60%),
+    radial-gradient(560px 280px at 85% 12%, rgba(6, 182, 212, 0.14), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 45%);
+  pointer-events: none;
+}
+
+/* ===== Card top layout ===== */
+.exe-teamTop {
+  display: grid;
+  grid-template-columns: 160px 1fr auto; /* larger column */
+  gap: 18px;
+  align-items: center;
+  min-width: 0;
+}
+
+.exe-teamMeta {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+
+/* ===== Image frame: consistent background for all team photos =====
+   This gives every image the same "studio" background + gradient ring.
+*/
+.exe-avatarWrap {
+  width: 150px;
+  height: 150px; /* portrait for half-body */
+  border-radius: 28px;
+  padding: 4px;
+
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(6, 182, 212, 0.95));
+  box-shadow: 0 20px 55px rgba(37, 99, 235, 0.28);
+
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.exe-avatarWrap::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 19px;
+
+  /* CONSISTENT PHOTO BACKGROUND */
+  background:
+    radial-gradient(80px 60px at 35% 25%, rgba(255, 255, 255, 0.12), transparent 62%),
+    radial-gradient(90px 70px at 70% 70%, rgba(6, 182, 212, 0.10), transparent 62%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(11, 17, 32, 0.92));
+  pointer-events: none;
+}
+
+/* Photo */
+.exe-avatarImg {
+  position: relative;
+  z-index: 1; /* above the background layer */
+  width: 100%;
+  height: 100%;
+  border-radius:  19px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+
+  /* makes different photos look consistent */
+  filter: saturate(1.02) contrast(1.02);
+}
+
+/* ===== Name / role ===== */
+.exe-leadName {
+  color: var(--text-0);
+  font-weight: 920;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.exe-leadRole {
+  color: var(--text-2);
+  font-weight: 780;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Founder badge */
+.exe-founderBadge {
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  width: 70px;
+  color: var(--text-0);
+  background: rgba(37, 99, 235, 0.14);
+  border: 1px solid rgba(37, 99, 235, 0.26);
+  white-space: nowrap;
+}
+
+/* ===== Points ===== */
+.exe-leadPoints {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.exe-leadPoints li {
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  gap: 10px;
+  align-items: start;
+
+  color: var(--text-1);
+  font-weight: 650;
+  font-size: 14px;
+  line-height: 22px;
+
+  min-width: 0;
+  overflow-wrap: anywhere; /* prevent overflow on long words */
+}
+
+.exe-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  margin-top: 6px;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+}
+
+/* ===== CTAs ===== */
+.exe-leadCtas {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(30, 41, 59, 0.62);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ===== Note ===== */
+.exe-leadNote {
+  margin-top: 12px;
+  color: rgba(148, 163, 184, 0.85);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+/* =========================================================
+   MOBILE: “very very perfect”
+   - stacked header layout
+   - larger photo
+   - badge under meta
+   - no overflow
+========================================================= */
+@media (max-width: 640px) {
+  .exe-teamCard {
+    padding: 16px;
+  }
+
+  .exe-teamTop {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    justify-items: start;
+  }
+
+  .exe-avatarWrap {
+    border-radius: 28px;
+    padding: 1px; 
+  }
+  .exe-avatarWrap::after {
+    border-radius: 25px;
+  }
+  .exe-avatarImg {
+    border-radius: 25px;
+  }
+
+  .exe-founderBadge {
+    order: 3;
+  }
+
+  .exe-leadName {
+    font-size: 19px;
+  }
+
+  .exe-leadPoints li {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .exe-leadCtas {
+    gap: 10px;
+  }
+
+  /* hard stop for horizontal scroll */
+  .exe-teamCard,
+  .exe-teamTop,
+  .exe-teamMeta,
+  .exe-leadPoints {
+    min-width: 0;
+    overflow-x: hidden;
+  }
+}
