@@ -89,3 +89,7 @@
 .exe-footerSmall {
   color: rgba(148, 163, 184, 0.75);
 }
+.exe-footerBrand img{
+  width: 45px;
+  height: 45px;
+}
