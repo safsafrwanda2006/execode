@@ -8,7 +8,7 @@ export default function SiteFooter() {
       <div className="exe-container exe-footerGrid">
         <div className="exe-footerBrand">
           <div className="exe-footerLogo">
-            <span className="exe-footerMark" aria-hidden="true" />
+            <img src="./icons/faveicon.png" alt="" />
             <div>
               <div className="exe-footerName">ExeCode<span className="exe-footerDot">.</span></div>
               <div className="exe-footerTag">Digital Engineering Agency</div>

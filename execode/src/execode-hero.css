@@ -159,6 +159,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
+.brand img{
+  width: 45px;
+  height: 40px;
+}
 
 .brandMark {
   width: 44px;
