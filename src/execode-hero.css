@@ -155,13 +155,14 @@ a {
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 5px;
   text-decoration: none;
   color: inherit;
 }
 .brand img{
+  height: 45px;
   width: 45px;
-  height: 40px;
+  
 }
 .brandMark {
   width: 44px;
