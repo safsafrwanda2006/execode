@@ -27,7 +27,7 @@ export default function ExeCodeHero() {
       <header className="siteHeader">
         <div className="container headerInner">
           <a className="brand" href="/" aria-label="ExeCode home">
-             <img src="./icons/faveicon.png" alt="" />
+             <img src="./icons/faveicon2.png" alt="" />
            <span>
             <span className="brandText">
               ExeCode <span className="brandDot">.</span>
