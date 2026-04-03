@@ -32,7 +32,7 @@ const TEAM = [
     id: "strategy",
     name: "Mohamed Yaser",
     role: "Content Creator & Brand Visual Specialist",
-    img: "/images/member/wdyaser.png", // put this image in /public
+    img: "/images/member/wdyaser.jpeg", // put this image in /public
     highlight: false,
     points: [
       "Client acquisition strategy",
