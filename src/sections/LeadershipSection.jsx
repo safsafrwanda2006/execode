@@ -30,9 +30,9 @@ const TEAM = [
   },
   {
     id: "strategy",
-    name: "Mortada Hasabo",
-    role: "Full stack strategist",
-    img: "/images/member/mortada.png", // put this image in /public
+    name: "Mohamed Yaser",
+    role: "Content Creator & Brand Visual Specialist",
+    img: "/images/member/wdyaser.png", // put this image in /public
     highlight: false,
     points: [
       "Client acquisition strategy",
